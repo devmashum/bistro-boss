@@ -17,11 +17,11 @@ export const router = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
-                path: '/menu',
+                path: 'menu',
                 element: <Menu></Menu>
             },
             {
-                path: '/order',
+                path: 'order/:category',
                 element: <Order></Order>
             }
         ]

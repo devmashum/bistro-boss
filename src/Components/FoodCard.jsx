@@ -10,9 +10,8 @@ const FoodCard = ({ item }) => {
                 <h2 className="card-title">{recipe}</h2>
                 <p className=" absolute right-0 top-0 mr-10 mt-10 p-2 bg-slate-900 text-white text-xl font-bold rounded">$ {price}</p>
 
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Add to Cart</button>
-                </div>
+
+                <button className="flex flex-col justify-center w-30 bg-slate-100 mx-auto mb-5 btn btn-primary btn-outline border-0 border-b-4 border-orange-400">Order now</button>
             </div>
         </div>
     );
