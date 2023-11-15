@@ -2,14 +2,19 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Providers/AuthProviders';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const captchaRef = useRef(null);
     const [disable, setDisable] = useState(true);
 
     const { signIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -25,6 +30,16 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "You logged in successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // nicher code ti navigate korar jonno bebohar kora hoyse
+                navigate(from, { replace: true });
             })
     }
 
