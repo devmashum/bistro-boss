@@ -29,7 +29,11 @@ const Dashboard = () => {
 
                     <div className="divider"></div>
 
+                    <li><NavLink to={'/'}><FaHome />Home</NavLink></li>
+                    <li><NavLink to={'/order/salad'}>
+                        <FaBook />
 
+                        Menu</NavLink></li>
 
 
                 </ul>
