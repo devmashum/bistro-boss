@@ -6,7 +6,7 @@ import useCart from '../hooks/useCart';
 
 const Dashboard = () => {
 
-    const [user] = useCart();
+    const [user, refetch] = useCart();
     return (
         <div className='flex gap-2'>
             <div className="w-64 min-h-screen bg-blue-300 ">
@@ -29,11 +29,7 @@ const Dashboard = () => {
 
                     <div className="divider"></div>
 
-                    <li><NavLink to={'/'}><FaHome />Home</NavLink></li>
-                    <li><NavLink to={'/order/salad'}>
-                        <FaBook />
 
-                        Menu</NavLink></li>
 
 
                 </ul>
