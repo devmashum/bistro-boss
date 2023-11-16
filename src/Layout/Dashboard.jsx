@@ -6,7 +6,7 @@ import useCart from '../hooks/useCart';
 
 const Dashboard = () => {
 
-    const [user, refetch] = useCart();
+
     return (
         <div className='flex gap-2'>
             <div className="w-64 min-h-screen bg-blue-300 ">
