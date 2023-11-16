@@ -13,7 +13,9 @@ const Dashboard = () => {
                 <ul className='menu text-xl font-bold '>
                     <li><NavLink to={'/dashboard/userHome'}><FaHome />User Home</NavLink></li>
 
-
+                    <li><NavLink to={'/dashboard/reservation'}>
+                        <FaCalendar></FaCalendar>
+                        Reservation</NavLink></li>
 
                     <li><NavLink to={'/dashboard/cart'}><MdAddShoppingCart />My Cart <span className='text-red-600'>({user.length})</span></NavLink></li>
 
