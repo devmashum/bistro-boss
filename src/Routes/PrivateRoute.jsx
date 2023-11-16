@@ -19,12 +19,7 @@ const PrivateRoute = ({ children }) => {
     if (user) {
         return children;
     }
-    // state={{ from: location }} replace eita use korte hobe user login korar purbo mohurto porjonto jeikhane silo seikhane login korar por auto chole jawar jonno abong login page er moddhe const navigate = useNavigate(); const location = useLocation(); const from = location.state?.from?.pathname || '/';
-
-
-
-
-
+    // state={{ from: location }} replace eita use korte hobe user login korar purbo mohurto porjonto jeikhane silo seikhane login korar por auto chole jawar jonno abong login page er moddhe const navigate = useNavigate(); const location = useLocation(); const from = location.state?.from?.pathname || '/'; sweetalert er por  navigate(from, { replace: true }); dite hobe 
 
     return <Navigate to={'/login'} state={{ from: location }} replace></Navigate>
 

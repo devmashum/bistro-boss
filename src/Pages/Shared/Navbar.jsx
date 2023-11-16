@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 
+import { CiShoppingCart } from "react-icons/ci";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     const handleLogout = () => {
@@ -16,10 +17,13 @@ const Navbar = () => {
         <li><Link to={'/menu'}>Our Menu</Link></li>
         <li><Link to={'/order/salad'}>Order Food</Link></li>
         <li><Link to={'/signup'}>Register</Link></li>
+        <li>
+            <Link to={'/'}>
+                <div className="badge badge-secondary">+0</div>
+                <div className="text-3xl"> <CiShoppingCart /></div>
+            </Link>
+        </li>
 
-        {
-            user ? <>  <li><Link onClick={handleLogout}>Log Out</Link></li> </> : <>   <li><Link to={'/login'}>Login</Link></li></>
-        }
 
 
 
@@ -42,8 +46,23 @@ const Navbar = () => {
                     {navOptions}
                 </ul>
             </div>
+
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link className=" mr-5 bg-white p-2 font-bold text-blue-600 rounded-full">{user?.displayName}
+                </Link>
+
+
+                {
+                    user ?
+                        <>
+                            <div>
+                                <Link onClick={handleLogout}>Log Out</Link>
+                            </div>
+                        </> :
+                        <>   <li><Link to={'/login'}>Login</Link></li>
+                        </>
+                }
+
             </div>
         </div>
     );
