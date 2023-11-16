@@ -19,8 +19,8 @@ const Navbar = () => {
         <li><Link to={'/signup'}>Register</Link></li>
         <li>
             <Link to={'/'}>
-                <div className="badge badge-secondary">+0</div>
                 <div className="text-3xl"> <CiShoppingCart /></div>
+                <div className="badge badge-secondary">+0</div>
             </Link>
         </li>
 
