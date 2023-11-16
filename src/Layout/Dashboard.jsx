@@ -17,11 +17,7 @@ const Dashboard = () => {
                         <FaCalendar></FaCalendar>
                         Reservation</NavLink></li>
 
-                    <li><NavLink to={'/dashboard/cart'}><MdAddShoppingCart />My Cart <span className='text-red-600'>({user.length})</span></NavLink></li>
 
-                    <li><NavLink to={'/dashboard/review'}>
-                        <MdRateReview></MdRateReview>
-                        My Review</NavLink></li>
 
                     <li><NavLink to={'/dashboard/bookings'}>
                         <MdBook></MdBook>
