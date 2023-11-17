@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: users = [] } = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
@@ -13,8 +14,31 @@ const AllUsers = () => {
         }
     })
 
-    const handleDelet = user => {
-        console.log(user)
+    const handleDeleteUser = user => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this user!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete this user!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/users/${user._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your user has been deleted.",
+                                icon: "success"
+                            });
+                            refetch();
+                        }
+                    })
+
+            }
+        });
     }
     return (
         <div >
@@ -29,7 +53,7 @@ const AllUsers = () => {
                     {/* head */}
                     <thead>
                         <tr>
-
+                            <th></th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -42,8 +66,10 @@ const AllUsers = () => {
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}
+                                </td>
+                                <td>
                                     <button onClick={() => handleDeleteUser(user)} className="btn    btn-base">
-                                        <FaTrash></FaTrash>
+                                        <FaUsers></FaUsers>
                                     </button>
                                 </td>
                                 <td>
@@ -51,6 +77,7 @@ const AllUsers = () => {
                                         <FaTrash></FaTrash>
                                     </button>
                                 </td>
+
                             </tr>)
                         }
 
