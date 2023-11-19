@@ -6,16 +6,11 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
-
+    // request interceptor to add authorization header for every secure all to the api
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access-token')}`
-                }
-
-            });
+            const res = await axiosSecure.get('/users');
             return res.data;
         }
     })
