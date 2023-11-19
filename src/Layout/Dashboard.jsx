@@ -3,12 +3,14 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { MdAddShoppingCart, MdBook, MdRateReview } from "react-icons/md";
 import { FaBook, FaCalendar, FaHome, FaList, FaMailBulk, FaUsers, FaUtensils } from "react-icons/fa";
 import useCart from '../hooks/useCart';
+import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
 
     const [user] = useCart();
     // TODO: get isAdmin value from the database
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+
     return (
         <div className='flex gap-2'>
             <div className="w-64 min-h-screen bg-blue-300 ">
