@@ -14,14 +14,18 @@ const AddItems = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input {...register("name")} />
                     <select {...register("category")}>
-                        <option value="salad">female</option>
+                        <option value="salad">salad</option>
                         <option value="male">male</option>
                         <option value="other">other</option>
                     </select>
                     <select className="select select-bordered w-full max-w-xs">
                         <option disabled selected>Select a Category</option>
-                        <option>Han Solo</option>
-                        <option>Greedo</option>
+                        <option value="salad">Salad</option>
+                        <option value="pizza">Pizza</option>
+                        <option value="soup">Soup</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="drinks">Drinks</option>
+
                     </select>
                     <input type="submit" />
                 </form>
