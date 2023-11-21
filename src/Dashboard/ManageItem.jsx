@@ -1,18 +1,52 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
 import SectionTitle from "../Components/SectionTitle/SectionTitle";
 import useMenu from "../hooks/useMenu";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
 
 
 const ManageItem = () => {
-    const [menu] = useMenu();
+    const [menu, refetch] = useMenu();
+    const axiosSecure = useAxiosSecure();
+
+
 
     const handleDeleteItem = (item) => {
 
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/menu/${item._id}`);
+                // console.log(res.data);
+                if (res.data.deletedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }
+
+
+
+            }
+        });
     }
     return (
         <div>
             <SectionTitle heading={'Manage all Items'}
                 subHeading={'Hurry Up'}></SectionTitle>
+            <p className="text-center bg-orange-500 p-2 rounded-full font-bold text-white text-xl">Total Items: {menu.length}</p>
 
             <div>
                 <div className="overflow-x-auto">
