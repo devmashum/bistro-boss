@@ -3,6 +3,7 @@ import SectionTitle from "../Components/SectionTitle/SectionTitle";
 import useMenu from "../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 
 
@@ -74,13 +75,12 @@ const ManageItem = () => {
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
+                                                <div className="mask mask-squire w-12 h-12">
                                                     <img src={item.image} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
+
                                             </div>
                                         </div>
                                     </td>
@@ -88,10 +88,10 @@ const ManageItem = () => {
                                     <td>
                                         {item.name}
                                     </td>
-                                    <td>{item.price}</td>
+                                    <td>${item.price}</td>
 
                                     <th>
-                                        <button className="btn btn-lg  bg-orange-400 btn-ghost btn-base "><FaEdit></FaEdit></button>
+                                        <Link to={`/dashboard/updateItem/${item._id}`}><button className="btn btn-lg  bg-orange-400 btn-ghost btn-base "><FaEdit></FaEdit></button></Link>
                                     </th>
                                     <td>
                                         <button onClick={() => handleDeleteItem(item)} className="btn bg-red-500  btn-lg btn-base" >
